@@ -28,6 +28,7 @@ interface Initializable {
 interface Authorizable {
     function rely(address) external;
     function deny(address) external;
+    function setAuthority(address) external;
 }
 
 interface Fileable {
@@ -267,6 +268,14 @@ library DssExecLib {
     */
     function deauthorize(address _base, address _ward) public {
         Authorizable(_base).deny(_ward);
+    }
+    /**
+        @dev Give an address authorization to perform auth actions on the contract.
+        @param _base   The address of the contract with a `setAuthority` pattern
+        @param _authority   Address to be authorized
+    */
+    function setAuthority(address _base, address _authority) public {
+        Authorizable(_base).setAuthority(_authority);
     }
     /**
         @dev Delegate vat authority to the specified address.
@@ -895,6 +904,20 @@ library DssExecLib {
         MomLike(osmMom()).setOsm(_ilk, _osm);
     }
 
+    /*****************************/
+    /*** Direct Deposit Module ***/
+    /*****************************/
+
+    /**
+        @dev Sets the target rate threshold for a dai direct deposit module (d3m)
+        @dev Aave: Targets the variable borrow rate
+        @param _d3m     The address of the D3M contract
+        @param _pct_bps Target rate in basis points. (ex. 4% == 400)
+    */
+    function setD3MTargetInterestRate(address _d3m, uint256 _pct_bps) public {
+        require(_pct_bps < BPS_ONE_HUNDRED_PCT); // DssExecLib/bar-too-high
+        setValue(_d3m, "bar", rdiv(_pct_bps, BPS_ONE_HUNDRED_PCT));
+    }
 
     /*****************************/
     /*** Collateral Onboarding ***/

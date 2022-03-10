@@ -5,9 +5,9 @@ A library for crafting spells in DSS more efficiently, predictably, and easily.
 
 ## Public Library Addresses
 
-- (v0.0.8) Mainnet: [0xfd88cee74f7d78697775abdae53f9da1559728e4](https://etherscan.io/address/0xfd88cee74f7d78697775abdae53f9da1559728e4#code)
-- (v0.0.8) Goerli: [0x4aad139a88d2dd5e7410b408593208523a3a891d](https://goerli.etherscan.io/address/0x4aad139a88d2dd5e7410b408593208523a3a891d#code)
-- (v0.0.8) Kovan: [0x4aad139a88d2dd5e7410b408593208523a3a891d](https://kovan.etherscan.io/address/0x4aad139a88d2dd5e7410b408593208523a3a891d#code)
+- (v0.0.9) Mainnet: [0x8de6ddbcd5053d32292aaa0d2105a32d108484a6](https://etherscan.io/address/0x8de6ddbcd5053d32292aaa0d2105a32d108484a6#code)
+- (v0.0.9) Goerli: [0x122f6c0dcd898b4a07310e92c3eae5d7ce0c8bb6](https://goerli.etherscan.io/address/0x122f6c0dcd898b4a07310e92c3eae5d7ce0c8bb6#code)
+- (v0.0.9) Kovan: [0xb1d60194ec975bc83f0300b7669a0803b6dd2955](https://kovan.etherscan.io/address/0xb1d60194ec975bc83f0300b7669a0803b6dd2955#code)
 
 ## Requirements
 
@@ -101,6 +101,7 @@ Below is an outline of all functions used in the library.
 ### Authorizations
 - `authorize(address _base, address _ward)`: Give an address authorization to perform auth actions on the contract.
 - `deauthorize(address _base, address _ward)`: Revoke contract authorization from an address.
+- `setAuthority(address _base, address _authority)`: Give an address authority to a base contract using authority pattern.
 - `delegateVat(address _usr)`: Delegate vat authority to the specified address.
 - `undelegateVat(address _usr)`: Revoke vat authority to the specified address.
 
@@ -173,6 +174,9 @@ Below is an outline of all functions used in the library.
 - `removeReaderFromWhitelistCall(address _oracle, address _reader)`: Removes an address to the OSM or Median's reader whitelist, disallowing the address to read prices.
 - `setMedianWritersQuorum(address _median, uint256 _minQuorum)`: Sets the minimum number of valid messages from whitelisted oracle feeds needed to update median price.
 - `allowOSMFreeze(address _osm, bytes32 _ilk)`: Add OSM address to OSM mom, allowing it to be frozen by governance.
+
+### Direct Deposit Module
+- `setD3MTargetInterestRate(address _d3m, uint256 _pct_bps)`: Set the target rate (`bar`) for a D3M module.
 
 ### Collateral Onboarding
 In order to onboard new collateral to the Maker protocol, the following must be done before the spell is prepared:

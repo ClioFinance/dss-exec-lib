@@ -191,7 +191,7 @@ contract DssLibExecTest is DSTest, DSMath {
     uint256 constant RAD      = 10 ** 45;
 
     // not provided in DSMath
-    function rpow(uint x, uint n, uint b) internal pure returns (uint z) {
+    function _rpow(uint x, uint n, uint b) internal pure returns (uint z) {
       assembly {
         switch x case 0 {switch n case 0 {z := b} default {z := 0}}
         default {
@@ -218,7 +218,7 @@ contract DssLibExecTest is DSTest, DSMath {
     uint256 TOLERANCE = 10 ** 22;
 
     function yearlyYield(uint256 duty) public pure returns (uint256) {
-        return rpow(duty, (365 * 24 * 60 * 60), RAY);
+        return _rpow(duty, (365 * 24 * 60 * 60), RAY);
     }
 
     function expectedRate(uint256 percentValue) public pure returns (uint256) {
@@ -448,8 +448,9 @@ contract DssLibExecTest is DSTest, DSMath {
         // hump values in RAD
         assertEq(vow.hump()/RAD, values.vow_hump);
         assertTrue(
-            (vow.hump() >= RAD && vow.hump() < HUNDRED * MILLION * RAD) ||
-            vow.hump() == 0
+            (vow.hump() >= RAD && vow.hump() < THOUSAND * MILLION * RAD) ||
+            vow.hump() == 0,
+            "DssExec.t.sol/hump-sanity-check-fail"
         );
         }
 

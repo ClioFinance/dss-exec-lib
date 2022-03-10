@@ -63,6 +63,10 @@ contract DssTestAction is DssAction {
         DssExecLib.deauthorize(base, ward);
     }
 
+    function setAuthority_test(address base, address authority) public {
+        DssExecLib.setAuthority(base, authority);
+    }
+
     function delegateVat_test(address usr) public {
         DssExecLib.delegateVat(usr);
     }
@@ -318,6 +322,13 @@ contract DssTestAction is DssAction {
         DssExecLib.allowOSMFreeze(osm, ilk);
     }
 
+    /*****************************/
+    /*** Direct Deposit Module ***/
+    /*****************************/
+
+    function setD3MTargetInterestRate_test(address d3m, uint256 pct_bps) public {
+        DssExecLib.setD3MTargetInterestRate(d3m, pct_bps);
+    }
 
     /*****************************/
     /*** Collateral Onboarding ***/
