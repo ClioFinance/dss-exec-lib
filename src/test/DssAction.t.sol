@@ -117,7 +117,7 @@ contract ActionTest is DSTest {
 
     mapping (bytes32 => Ilk) ilks;
 
-    address constant public LOG = 0xdA0Ab1e0017DEbCd72Be8599041a2aa3bA7e740F;
+    address constant public LOG = 0x7EafEEa64bF6F79A79853F4A660e0960c821BA50;
 
     uint256 constant public THOUSAND = 10 ** 3;
     uint256 constant public MILLION  = 10 ** 6;
@@ -289,7 +289,7 @@ contract ActionTest is DSTest {
             keccak256(abi.encode(address(this), uint256(0))), // Grant auth to test contract
             bytes32(uint256(1))
         );
-        clog = ChainLog(0xdA0Ab1e0017DEbCd72Be8599041a2aa3bA7e740F); // Deployed chain
+        clog = ChainLog(0x7EafEEa64bF6F79A79853F4A660e0960c821BA50); // Deployed chain
 
         clog.setAddress("MCD_VAT",           address(vat));
         clog.setAddress("MCD_DOG",           address(dog));

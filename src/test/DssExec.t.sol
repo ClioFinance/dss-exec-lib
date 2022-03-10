@@ -170,7 +170,7 @@ contract DssLibExecTest is DSTest, DSMath {
     ClipAbstract     clipXMPLA;
     MedianAbstract    medXMPLA = MedianAbstract(     0x56D4bBF358D7790579b55eA6Af3f605BcA2c0C3A); // USDT median
 
-    ChainlogAbstract chainlog  = ChainlogAbstract(   0xdA0Ab1e0017DEbCd72Be8599041a2aa3bA7e740F);
+    ChainlogAbstract chainlog  = ChainlogAbstract(   0x7EafEEa64bF6F79A79853F4A660e0960c821BA50);
 
     SystemValues afterSpell;
 
